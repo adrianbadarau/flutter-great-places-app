@@ -2,11 +2,11 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 
 class PlaceLocation {
-  double lat;
-  double long;
-  String address;
+  final double lat;
+  final double long;
+  final String address;
 
-  PlaceLocation({@required this.lat, @required this.long, this.address});
+  const PlaceLocation({@required this.lat, @required this.long, this.address});
 
   Map<String, Object> toJson() {
     return {'lat': lat, 'long': long, 'address': address};

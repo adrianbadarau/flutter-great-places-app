@@ -45,6 +45,8 @@
 	<string>Need gallery access</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Need camera access</string>
+	<key>io.flutter.embedded_views_preview</key>
+	<true/>
 
 </dict>
 </plist>
