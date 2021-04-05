@@ -8,7 +8,7 @@ class MapScreen extends StatefulWidget {
 
   MapScreen(
       {this.initialLocation =
-          const PlaceLocation(lat: 37.4217, long: -122.0844, address: "1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA"),
+          const PlaceLocation(lat: 37.4217, long: -122.0844),
       this.isSelecting = false});
 
   @override
@@ -37,12 +37,12 @@ class _MapScreenState extends State<MapScreen> {
       body: GoogleMap(
         initialCameraPosition: CameraPosition(target: LatLng(widget.initialLocation.lat, widget.initialLocation.long), zoom: 16),
         onTap: widget.isSelecting ? _selectLocation : null,
-        markers: _pickedLocation == null
+        markers: (_pickedLocation == null && widget.isSelecting)
             ? {}
             : {
                 Marker(
                   markerId: MarkerId('m1'),
-                  position: _pickedLocation,
+                  position: _pickedLocation ?? LatLng(widget.initialLocation.lat, widget.initialLocation.long),
                 )
               },
       ),
