@@ -6,11 +6,11 @@ class DBHelper {
     final dbPath = await sql.getDatabasesPath();
     return sql.openDatabase(path.join(dbPath, 'places.db'), onCreate: (db, version) {
       return db.execute(createQuery);
-    }, version: 2);
+    }, version: 1);
   }
 
   static Future<void> insert(String table, Map<String, Object> data) async {
-    final db = await DBHelper.getConnection(createQuery: 'CREATE TABLE $table(id TEXT PRIMARY KEY, title TEXT, image TEXT)');
+    final db = await DBHelper.getConnection(createQuery: 'CREATE TABLE $table(id TEXT PRIMARY KEY, title TEXT, image TEXT, loc_lat REAL, loc_long REAL, loc_address TEXT)');
     await db.insert(table, data, conflictAlgorithm: sql.ConflictAlgorithm.replace);
     return;
   }
