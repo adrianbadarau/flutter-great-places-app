@@ -7,6 +7,10 @@ class PlaceLocation {
   String address;
 
   PlaceLocation({@required this.lat, @required this.long, this.address});
+
+  Map<String, Object> toJson() {
+    return {'lat': lat, 'long': long, 'address': address};
+  }
 }
 
 class Place {
@@ -16,4 +20,8 @@ class Place {
   File image;
 
   Place({@required this.id, @required this.title, @required this.location, @required this.image});
+
+  Map<String, Object> toJson() {
+    return {'id': id, 'title': title, /*'location': location.toJson(),*/ 'image': image.path};
+  }
 }
